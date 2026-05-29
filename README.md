@@ -50,7 +50,9 @@ A fully native Android application wrapper utilizing a full-screen **WebView** s
 ```
 .
 ├── resources/                     # Common Web assets (HTML, CSS, JS, Logos)
-├── EmmECalculator-Release/        # Windows standalone executable folder
+├── Releases/                      # Pre-compiled application builds
+│   ├── Windows/                   # Lightweight standalone Windows desktop app (.exe & .zip)
+│   └── Android/                   # High-performance Android installation file (.apk)
 ├── emmecalculator-android/        # Native Android project (Kotlin / Gradle wrapper)
 │   └── app/src/main/assets/       # Embedded Web assets for Android WebView
 ├── .github/workflows/             # GitHub Actions CI/CD workflows
@@ -63,22 +65,27 @@ A fully native Android application wrapper utilizing a full-screen **WebView** s
 
 ## ⚡ Quick Start (Windows Standalone)
 
-We have packaged the Windows application in an extremely compact, single-file ZIP archive ready for immediate deployment.
+We have packaged the Windows application in an extremely compact, ready-to-run format in the `Releases/Windows/` directory.
 
-1.  Download the compiled ZIP folder: **`EmmECalculator-Windows.zip`** from the repository.
-2.  Extract the folder `EmmECalculator-Release` to your preferred directory.
-3.  Double-click **`EmmECalculator.exe`** to launch the application instantly.
+1.  Navigate to the [Releases/Windows/](file:///d:/web/software/calculator/Releases/Windows/) folder in this repository.
+2.  You can double-click **`EmmECalculator.exe`** to launch it instantly, or download and extract the compressed **`EmmECalculator-Windows.zip`** archive.
+3.  Enjoy using the sleek, lightweight desktop app!
 
 > [!NOTE]
 > Since this is a custom-compiled standalone C++ executable, your Windows Defender/SmartScreen may show a security prompt when opening it for the first time. Simply click **"More info"** and select **"Run anyway"** to launch.
 
 ---
 
-## 📱 Quick Start (Android APK Compilation)
+## 📱 Quick Start (Android APK)
 
-Since Gradle compilation requires local installation of Java JDK and Android SDK Command Line Tools, we have integrated **automated cloud compilation** into your GitHub repository!
+We have provided a pre-compiled high-performance installation APK in the `Releases/Android/` directory, and also configured **automated cloud compilation** on GitHub!
 
-### How to get your APK file:
+### Method 1: Instant Installation (Recommended)
+1.  Navigate to [Releases/Android/](file:///d:/web/software/calculator/Releases/Android/).
+2.  Download **`EmmECalculator.apk`** to your Android device.
+3.  Tap the downloaded file to install and launch the calculator!
+
+### Method 2: Cloud Compiler (Compile from Source)
 1.  Push this codebase to your personal GitHub repository.
 2.  Navigate to the **Actions** tab on your GitHub repository page.
 3.  Under the workflows list, click on **Build Android APK**.

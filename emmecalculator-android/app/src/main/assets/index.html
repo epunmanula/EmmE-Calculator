@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>EmmE CALCULATOR</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
@@ -36,24 +36,46 @@
                 <nav class="menu">
                     <button class="menu-item active" id="nav-calc">
                         <svg class="m-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/></svg>
-                        CALCULATOR
+                        <span>CALCULATOR</span>
                     </button>
                     <button class="menu-item" id="nav-conv">
                         <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                        CONVERTER
+                        <span>CONVERTER</span>
                     </button>
 
                     <!-- MODES SECTION -->
-                    <div style="margin: 30px 0 10px 30px; font-size: 0.65rem; color: var(--text-muted); font-family: monospace; letter-spacing: 2px;">MODES</div>
+                    <div class="desktop-modes-title" style="margin: 30px 0 10px 30px; font-size: 0.65rem; color: var(--text-muted); font-family: monospace; letter-spacing: 2px;">MODES</div>
 
                     <button class="menu-item sub-item mode-btn" data-mode="scientific">
-                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                        SCIENTIFIC
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h3l3 9 4-18 3 12h5"/></svg>
+                        <span>SCIENTIFIC</span>
                     </button>
                     <button class="menu-item sub-item mode-btn" data-mode="developer">
                         <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        DEVELOPER
+                        <span>DEVELOPER</span>
                     </button>
+
+                    <!-- MOBILE MODES TOGGLE BUTTON -->
+                    <button class="menu-item mobile-modes-btn" id="nav-modes-toggle">
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                        <span>MODES <span style="font-size:0.6rem; margin-left: 2px; color: var(--accent-lime);">▼</span></span>
+                    </button>
+
+                    <!-- MOBILE FLOATING MODES DROPDOWN -->
+                    <div class="mobile-dropdown" id="modes-dropdown">
+                        <button class="dropdown-item mode-btn active" data-mode="standard">
+                            <svg class="m-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/></svg>
+                            <span>STANDARD</span>
+                        </button>
+                        <button class="dropdown-item mode-btn" data-mode="scientific">
+                            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h3l3 9 4-18 3 12h5"/></svg>
+                            <span>SCIENTIFIC</span>
+                        </button>
+                        <button class="dropdown-item mode-btn" data-mode="developer">
+                            <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>DEVELOPER</span>
+                        </button>
+                    </div>
                 </nav>
                 <div class="sidebar-footer">
                     <button class="btn-sync" id="btn-sync-data">

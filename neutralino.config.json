@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
   "applicationId": "js.neutralino.emmecalculator",
   "version": "1.0.0",
+  "applicationIcon": "resources/logo.png",
   "defaultMode": "window",
   "port": 0,
   "documentRoot": "/resources/",

@@ -293,8 +293,11 @@ document.addEventListener("DOMContentLoaded", () => {
         switchTab('calc'); // Force tab switch
         
         modeBtns.forEach(btn => btn.classList.remove('active'));
-        const modeBtn = document.querySelector(`[data-mode="${mode}"]`);
-        if(modeBtn) modeBtn.classList.add('active');
+        const matchingBtns = document.querySelectorAll(`[data-mode="${mode}"]`);
+        matchingBtns.forEach(btn => btn.classList.add('active'));
+        
+        const dropdown = document.getElementById('modes-dropdown');
+        if (dropdown) dropdown.classList.remove('show');
         
         Object.values(modeViews).forEach(view => view.classList.remove('active'));
         modeViews[mode].classList.add('active');
@@ -314,6 +317,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     modeBtns.forEach(btn => btn.addEventListener('click', (e) => switchCalcMode(e.currentTarget.dataset.mode)));
+
+    // Mobile Modes Dropdown Logic
+    const modesToggle = document.getElementById('nav-modes-toggle');
+    const modesDropdown = document.getElementById('modes-dropdown');
+    
+    if (modesToggle && modesDropdown) {
+        modesToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modesDropdown.classList.toggle('show');
+            
+            // Micro-animation click
+            modesToggle.style.transform = 'scale(0.95)';
+            setTimeout(() => modesToggle.style.transform = '', 100);
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!modesDropdown.contains(e.target) && e.target !== modesToggle) {
+                modesDropdown.classList.remove('show');
+            }
+        });
+    }
 
     // Key presses (Numbers & Operators)
     document.querySelectorAll('.k-num, .k-sci, .k-dev-hex').forEach(btn => {
