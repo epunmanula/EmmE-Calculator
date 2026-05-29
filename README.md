@@ -1,13 +1,24 @@
 # 🌌 EmmE Calculator
 
 [![Release](https://img.shields.io/badge/Release-v1.0.0-blueviolet?style=for-the-badge)](https://github.com/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue?style=for-the-badge)](https://github.com/)
-[![Size](https://img.shields.io/badge/Size-1.83%20MB-success?style=for-the-badge)](https://github.com/)
-[![Framework](https://img.shields.io/badge/Built%20With-Neutralinojs-ffaa00?style=for-the-badge)](https://neutralino.js.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)](https://github.com/)
+[![Desktop Size](https://img.shields.io/badge/Desktop%20Size-1.83%20MB-success?style=for-the-badge)](https://github.com/)
+[![Android Build](https://github.com/your-username/emme-calculator/actions/workflows/build-apk.yml/badge.svg)](https://github.com/your-username/emme-calculator/actions)
 
-A stunning, premium-grade, and futuristic desktop calculator application designed with modern aesthetics (glassmorphism, vibrant HSL tailored colors, and sleek micro-animations) and packed with versatile functional modules. 
+A stunning, premium-grade, and futuristic calculator application designed with modern aesthetics (glassmorphism, vibrant HSL tailored colors, and sleek micro-animations) and packed with versatile functional workspaces for desktop and mobile!
 
-Unlike heavy, traditional desktop wrappers like Electron (which compile to over **60MB+**), **EmmE Calculator is engineered using Neutralinojs, resulting in a single standalone executable file of only 1.83MB!** It is incredibly fast, responsive, and easy to share with friends.
+---
+
+## ⚡ Deployment Modes
+
+### 💻 1. Lightweight Desktop App (~1.83MB)
+Engineered using **Neutralinojs** to eliminate massive bundle runtimes like Chromium/Node.js, producing a single, self-contained, lightning-fast executable file of only **1.83MB** for Windows, macOS, or Linux.
+
+### 📱 2. High-Performance Android App (APK)
+A fully native Android application wrapper utilizing a full-screen **WebView** shell to render the premium Web UI. 
+*   **Zero Loading Lag:** Assets are loaded locally from the device's internal packaging (`file:///android_asset/`).
+*   **Fully Responsive:** Automatic scaling and viewport control designed to fit perfectly on any mobile screen aspect ratio.
+*   **Cloud Compiled:** Integrated with **GitHub Actions** to automatically compile the APK file in the cloud on every push!
 
 ---
 
@@ -34,11 +45,27 @@ Unlike heavy, traditional desktop wrappers like Electron (which compile to over 
 
 ---
 
+## 📂 Project Structure
+
+```
+.
+├── resources/                     # Common Web assets (HTML, CSS, JS, Logos)
+├── EmmECalculator-Release/        # Windows standalone executable folder
+├── emmecalculator-android/        # Native Android project (Kotlin / Gradle wrapper)
+│   └── app/src/main/assets/       # Embedded Web assets for Android WebView
+├── .github/workflows/             # GitHub Actions CI/CD workflows
+│   └── build-apk.yml              # Automated APK Compiler script
+├── neutralino.config.json         # Desktop App Packaging configuration
+└── README.md                      # Project documentation
+```
+
+---
+
 ## ⚡ Quick Start (Windows Standalone)
 
 We have packaged the Windows application in an extremely compact, single-file ZIP archive ready for immediate deployment.
 
-1.  Download the compiled ZIP folder: **`EmmECalculator-Windows.zip`** from the repository releases.
+1.  Download the compiled ZIP folder: **`EmmECalculator-Windows.zip`** from the repository.
 2.  Extract the folder `EmmECalculator-Release` to your preferred directory.
 3.  Double-click **`EmmECalculator.exe`** to launch the application instantly.
 
@@ -47,62 +74,36 @@ We have packaged the Windows application in an extremely compact, single-file ZI
 
 ---
 
-## ⚙️ Architecture & Technical Stack
+## 📱 Quick Start (Android APK Compilation)
 
-EmmE Calculator uses a decoupled web-native frontend connected to a lightweight C++ backend container powered by **Neutralinojs**.
+Since Gradle compilation requires local installation of Java JDK and Android SDK Command Line Tools, we have integrated **automated cloud compilation** into your GitHub repository!
 
-```mermaid
-graph TD
-    A[EmmECalculator.exe / C++ Engine] -->|Spawns Native WebView2| B[Web UI Framework]
-    subgraph Frontend [Web Assets - 100% Embedded]
-        B --> C[index.html - Structure]
-        B --> D[styles.css - Design & Animations]
-        B --> E[script.js - Reactive Logic]
-    end
-    E -->|API Stream Requests| F[External Exchange Rate API]
-    E -->|Smart History Data| G[Clipboard API / Local Storage]
-```
-
-### Stack Components:
-*   **Frontend Logic:** Pure Vanilla JS (ES6) - No bulky frameworks, ensuring instant loading and sub-millisecond execution.
-*   **Styling System:** Vanilla CSS3 - Utilizing CSS variables, flexbox/grid architectures, `@keyframes` custom cubic-bezier animations, and backdrop filters for glassmorphism.
-*   **Desktop Wrapper:** **Neutralinojs v6.7.0** - Utilizing the operating system's native Web Browser engine (Edge/WebView2 on Windows, WebKitGTK on Linux, WebKit on macOS) to eliminate the huge Chromium bundle.
+### How to get your APK file:
+1.  Push this codebase to your personal GitHub repository.
+2.  Navigate to the **Actions** tab on your GitHub repository page.
+3.  Under the workflows list, click on **Build Android APK**.
+4.  You will see a running workflow. Once it completes successfully (indicated by a green checkmark), click on the completed run.
+5.  Scroll down to the **Artifacts** section at the bottom, and click on **`EmmECalculator-Android-Debug-APK`** to download your custom `.apk` file!
+6.  Transfer the `.apk` file to your mobile phone, tap it to install, and enjoy your stunning calculator app on the go!
 
 ---
 
-## 🛠️ Development & Building from Source
+## 🛠️ Development & Building from Source (Local)
 
-To run this application locally in development mode or compile it for alternative operating systems (macOS, Linux), follow these steps:
+### 💻 For Desktop:
+1.  **Prerequisites:** Node.js (v16+) installed.
+2.  **Download binaries:** `npx @neutralinojs/neu update`
+3.  **Run in Dev mode:** `npx @neutralinojs/neu run`
+4.  **Build binary:** `npx @neutralinojs/neu build --embed-resources`
 
-### Prerequisites:
-*   [Node.js](https://nodejs.org/) (v16 or higher) installed on your system.
-
-### Steps:
-
-1.  **Clone the Repository:**
+### 📱 For Android:
+1.  **Prerequisites:** Java JDK 17 and Android Studio installed.
+2.  **Open Project:** Open the `emmecalculator-android` folder in Android Studio.
+3.  **Build debug APK locally:** Open your terminal inside the `emmecalculator-android/` directory and run:
     ```bash
-    git clone https://github.com/your-username/emme-calculator.git
-    cd emme-calculator
+    ./gradlew assembleDebug
     ```
-
-2.  **Download Neutralinojs Binaries:**
-    Run the following command to download the operating-system-specific engine binaries and types:
-    ```bash
-    npx @neutralinojs/neu update
-    ```
-
-3.  **Run in Development Mode:**
-    Launch a local dev server with hot-reload and web inspector console enabled:
-    ```bash
-    npx @neutralinojs/neu run
-    ```
-
-4.  **Build standalone binaries for all platforms:**
-    Compile highly compressed binaries with resources embedded inside them for Windows, macOS, and Linux:
-    ```bash
-    npx @neutralinojs/neu build --embed-resources
-    ```
-    Your compiled standalone executables will be generated inside the `dist/emme-calculator/` folder!
+    Your compiled APK will be generated at `emmecalculator-android/app/build/outputs/apk/debug/app-debug.apk`!
 
 ---
 
