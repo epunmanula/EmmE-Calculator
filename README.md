@@ -120,4 +120,4 @@ This project is licensed under the MIT License - feel free to use, modify, and d
 
 ---
 
-*Made with 💖 by EmmE Calculator Team.*
+*Made with 💖 by Epun Manula.*
