@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmmE CALCULATOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hologram-bg"></div>
+    <div class="dashboard">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="brand heartbeat-glow" style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                <img src="logo.png" alt="Logo" style="height: 50px; filter: drop-shadow(0 0 12px rgba(212, 255, 58, 0.4)); object-fit: contain; border-radius: 8px;">
+                <div class="logo" style="margin: 0; animation: none;">EmmE <span style="font-size: 0.6em; font-family: monospace; letter-spacing: 0px; color: var(--text-primary);">CALCULATOR</span></div>
+            </div>
+            <div class="nav-tools">
+                <button class="icon-btn" id="btn-open-utility" title="Utility Panel & History">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16c0 1.1.9 2 2 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>
+                </button>
+                <button class="icon-btn" title="Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                </button>
+                <button class="icon-btn" title="User">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="menu">
+                    <button class="menu-item active" id="nav-calc">
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/></svg>
+                        CALCULATOR
+                    </button>
+                    <button class="menu-item" id="nav-conv">
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        CONVERTER
+                    </button>
+
+                    <!-- MODES SECTION -->
+                    <div style="margin: 30px 0 10px 30px; font-size: 0.65rem; color: var(--text-muted); font-family: monospace; letter-spacing: 2px;">MODES</div>
+
+                    <button class="menu-item sub-item mode-btn" data-mode="scientific">
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        SCIENTIFIC
+                    </button>
+                    <button class="menu-item sub-item mode-btn" data-mode="developer">
+                        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        DEVELOPER
+                    </button>
+                </nav>
+                <div class="sidebar-footer">
+                    <button class="btn-sync" id="btn-sync-data">
+                        <svg class="gear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        <span>SYNC_DATA_STREAM</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <div class="grid-container">
+                    
+                    <!-- Calculator Panel -->
+                    <section class="calc-panel anim-item heartbeat-glow">
+                        <div class="display-box hover-lift">
+                            <div class="d-header">
+                                <div class="mini-terminal" id="mini-terminal"></div>
+                                <div class="d-icons">
+                                    <button id="calc-copy" class="d-btn">📋</button>
+                                    <button id="calc-paste" class="d-btn">📝</button>
+                                </div>
+                            </div>
+                            <!-- Small sub-display for equation history -->
+                            <div class="display-history" id="calc-history"></div>
+                            <input type="text" class="main-display" id="calc-display" value="0" readonly />
+                        </div>
+
+                        <div class="modes-container">
+                            <!-- STANDARD MODE -->
+                            <div class="calc-mode-view active" id="view-standard">
+                                <div class="numpad hover-lift">
+                                    <div id="grid-ripple-container-std" class="ripple-wrapper"></div>
+                                    <!-- ROW 1 -->
+                                    <button class="key k-accent-red" data-action="clear-std">AC</button>
+                                    <button class="key k-sub" data-action="backspace-std">⌫</button>
+                                    <button class="key k-sub" data-action="percent-std">%</button>
+                                    <button class="key k-op" data-op="÷">÷</button>
+                                    <!-- ROW 2 -->
+                                    <button class="key k-num" data-val="7">7</button>
+                                    <button class="key k-num" data-val="8">8</button>
+                                    <button class="key k-num" data-val="9">9</button>
+                                    <button class="key k-op" data-op="×">×</button>
+                                    <!-- ROW 3 -->
+                                    <button class="key k-num" data-val="4">4</button>
+                                    <button class="key k-num" data-val="5">5</button>
+                                    <button class="key k-num" data-val="6">6</button>
+                                    <button class="key k-op" data-op="-">-</button>
+                                    <!-- ROW 4 -->
+                                    <button class="key k-num" data-val="1">1</button>
+                                    <button class="key k-num" data-val="2">2</button>
+                                    <button class="key k-num" data-val="3">3</button>
+                                    <button class="key k-op" data-op="+">+</button>
+                                    <!-- ROW 5 -->
+                                    <button class="key k-num" data-action="toggle-sign-std">+/-</button>
+                                    <button class="key k-num" data-val="0">0</button>
+                                    <button class="key k-num" data-val=".">.</button>
+                                    <button class="key k-equals" id="calc-equals-std">=</button>
+                                </div>
+                            </div>
+                            
+                            <!-- SCIENTIFIC MODE -->
+                            <div class="calc-mode-view" id="view-scientific">
+                                <div class="numpad grid-sci hover-lift">
+                                    <div id="grid-ripple-container-sci" class="ripple-wrapper"></div>
+                                    <button class="key k-sci" data-sci="sin">sin</button>
+                                    <button class="key k-sci" data-sci="cos">cos</button>
+                                    <button class="key k-sci" data-sci="tan">tan</button>
+                                    <button class="key k-accent-red" data-action="clear-sci">AC</button>
+                                    <button class="key k-sub" data-action="backspace-sci">⌫</button>
+                                    
+                                    <button class="key k-sci" data-sci="log">log</button>
+                                    <button class="key k-sci" data-sci="ln">ln</button>
+                                    <button class="key k-sci" data-sci="(">(</button>
+                                    <button class="key k-sci" data-sci=")">)</button>
+                                    <button class="key k-op" data-op="÷">÷</button>
+                                    
+                                    <button class="key k-sci" data-sci="√">√</button>
+                                    <button class="key k-num" data-val="7">7</button>
+                                    <button class="key k-num" data-val="8">8</button>
+                                    <button class="key k-num" data-val="9">9</button>
+                                    <button class="key k-op" data-op="×">×</button>
+                                    
+                                    <button class="key k-sci" data-sci="x²">x²</button>
+                                    <button class="key k-num" data-val="4">4</button>
+                                    <button class="key k-num" data-val="5">5</button>
+                                    <button class="key k-num" data-val="6">6</button>
+                                    <button class="key k-op" data-op="-">-</button>
+                                    
+                                    <button class="key k-sci" data-sci="x^y">x^y</button>
+                                    <button class="key k-num" data-val="1">1</button>
+                                    <button class="key k-num" data-val="2">2</button>
+                                    <button class="key k-num" data-val="3">3</button>
+                                    <button class="key k-op" data-op="+">+</button>
+                                    
+                                    <button class="key k-sci" data-sci="π">π</button>
+                                    <button class="key k-sci" data-sci="e">e</button>
+                                    <button class="key k-num" data-val="0">0</button>
+                                    <button class="key k-num" data-val=".">.</button>
+                                    <button class="key k-equals" id="calc-equals-sci">=</button>
+                                </div>
+                            </div>
+                            
+                            <!-- DEVELOPER MODE -->
+                            <div class="calc-mode-view" id="view-developer">
+                                <div class="dev-bases">
+                                    <div class="base-row"><label class="lbl-hex">HEX</label><input type="text" id="dev-hex" class="base-input" placeholder="0"></div>
+                                    <div class="base-row"><label class="lbl-dec">DEC</label><input type="text" id="dev-dec" class="base-input active-base" placeholder="0"></div>
+                                    <div class="base-row"><label class="lbl-oct">OCT</label><input type="text" id="dev-oct" class="base-input" placeholder="0"></div>
+                                    <div class="base-row"><label class="lbl-bin">BIN</label><input type="text" id="dev-bin" class="base-input" placeholder="0"></div>
+                                </div>
+                                
+                                <div class="dev-data-units">
+                                    <div style="display:flex; gap:10px;">
+                                        <input type="number" id="dev-bytes" class="api-key-input" placeholder="Bytes" style="padding: 10px; flex:1;">
+                                        <input type="text" id="dev-unit-out" class="api-key-input" placeholder="0 KB / 0 MB" style="padding: 10px; flex:2;" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="numpad grid-dev hover-lift" style="margin-top:15px;">
+                                    <div id="grid-ripple-container-dev" class="ripple-wrapper"></div>
+                                    <button class="key k-dev-hex" data-val="A">A</button>
+                                    <button class="key k-dev-hex" data-val="B">B</button>
+                                    <button class="key k-dev-op" data-devop="AND">AND</button>
+                                    <button class="key k-dev-op" data-devop="OR">OR</button>
+                                    <button class="key k-accent-red" data-action="clear-dev">AC</button>
+                                    
+                                    <button class="key k-dev-hex" data-val="C">C</button>
+                                    <button class="key k-dev-hex" data-val="D">D</button>
+                                    <button class="key k-num" data-val="7">7</button>
+                                    <button class="key k-num" data-val="8">8</button>
+                                    <button class="key k-num" data-val="9">9</button>
+                                    
+                                    <button class="key k-dev-hex" data-val="E">E</button>
+                                    <button class="key k-dev-hex" data-val="F">F</button>
+                                    <button class="key k-num" data-val="4">4</button>
+                                    <button class="key k-num" data-val="5">5</button>
+                                    <button class="key k-num" data-val="6">6</button>
+                                    
+                                    <button class="key k-dev-op" data-devop="XOR">XOR</button>
+                                    <button class="key k-dev-op" data-devop="NOT">NOT</button>
+                                    <button class="key k-num" data-val="1">1</button>
+                                    <button class="key k-num" data-val="2">2</button>
+                                    <button class="key k-num" data-val="3">3</button>
+                                    
+                                    <button class="key k-dev-op" data-devop="<<"><<</button>
+                                    <button class="key k-dev-op" data-devop=">>">>></button>
+                                    <button class="key k-sub" data-action="backspace-dev">⌫</button>
+                                    <button class="key k-num" data-val="0">0</button>
+                                    <button class="key k-equals" id="calc-equals-dev">=</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Right Column: Converter & Log -->
+                    <div class="right-column">
+                        <section class="fx-panel anim-item hover-lift">
+                            <div class="fx-header">
+                                <div class="live-rate-box">
+                                    <span>LIVE RATE</span>
+                                    <label class="switch">
+                                        <input type="checkbox" id="live-rate-switch" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="fx-body">
+                                <div class="input-row">
+                                    <div style="display:flex; justify-content:space-between;">
+                                        <label>SOURCE</label>
+                                        <select id="fx-source" class="fx-select"></select>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="number" id="usd-input" placeholder="0.00">
+                                    </div>
+                                </div>
+                                
+                                <div class="swap-row">
+                                    <button class="swap-btn" id="swap-btn" title="Swap Currencies">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 8 16 13"/><line x1="21" y1="8" x2="9" y2="8"/><polyline points="8 21 3 16 8 11"/><line x1="3" y1="16" x2="15" y2="16"/></svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div style="display:flex; justify-content:space-between;">
+                                        <label>TARGET</label>
+                                        <select id="fx-target" class="fx-select"></select>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" id="lkr-output" placeholder="0.00" readonly>
+                                    </div>
+                                </div>
+                                <div class="rate-status">
+                                    <span id="rate-display">FETCHING RATES...</span>
+                                    <span id="sync-time">SYNC: --</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="log-panel anim-item hover-lift" id="log-trigger">
+                            <div class="log-left">
+                                <div class="log-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" class="clock-icon" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                </div>
+                                <div class="log-text">
+                                    <h4>History</h4>
+                                    <p>Recent Calculations</p>
+                                </div>
+                            </div>
+                            <div class="log-right">
+                                <svg viewBox="0 0 24 24" fill="none" class="arrow-icon" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                        </section>
+                        
+                        <!-- Hidden Log Drawer -->
+                        <div class="log-drawer hidden anim-item hover-lift" id="log-drawer">
+                            <div class="drawer-header">
+                                <h5>RECENT HISTORY</h5>
+                                <button class="close-drawer" id="close-drawer">✕</button>
+                            </div>
+                            <ul id="conversion-history-list">
+                                <!-- History items populated by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Settings & Profile Overlay -->
+    <div id="settings-overlay" class="overlay-backdrop hidden">
+        <div class="settings-modal anim-slide-in">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="close-modal" id="btn-close-settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Profile Section -->
+                <section class="settings-section profile-section">
+                    <div class="avatar-ring">
+                        <div class="avatar-core">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="username">Guest User</div>
+                        <div class="status-indicator">
+                            <span class="status-dot"></span> ONLINE
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-box">
+                            <span class="stat-val">1,024</span>
+                            <span class="stat-lbl">Operations</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-val">00:45:12</span>
+                            <span class="stat-lbl">Session Time</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Preferences -->
+                <section class="settings-section">
+                    <h4 class="section-title">Themes</h4>
+                    <div class="theme-picker">
+                        <button class="color-btn active" data-color="#d4ff3a" style="--btn-color: #d4ff3a;"></button>
+                        <button class="color-btn" data-color="#ff00ff" style="--btn-color: #ff00ff;"></button>
+                        <button class="color-btn" data-color="#00f3ff" style="--btn-color: #00f3ff;"></button>
+                        <button class="color-btn" data-color="#ffd500" style="--btn-color: #ffd500;"></button>
+                    </div>
+                </section>
+                
+                <section class="settings-section">
+                    <h4 class="section-title">Preferences</h4>
+                    <div class="toggle-row">
+                        <span>Key Sounds</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggle-sfx">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-row">
+                        <span>Haptic Feedback</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggle-haptic" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </section>
+                
+                <section class="settings-section">
+                    <h4 class="section-title">API Configuration</h4>
+                    <div class="api-wrap">
+                        <input type="password" class="api-key-input" placeholder="Enter Exchange API Key">
+                        <button class="btn-save-api">Save</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Utility & History Panel -->
+    <div id="utility-overlay" class="overlay-backdrop hidden">
+        <div class="settings-modal anim-slide-in">
+            <div class="modal-header">
+                <h3>Utility Console</h3>
+                <button class="close-modal" id="btn-close-utility">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="modal-body utility-body">
+                <!-- Smart History -->
+                <section class="settings-section">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h4 class="section-title" style="margin-bottom:0;">Smart Data Tape</h4>
+                        <button id="btn-clear-history" class="btn-save-api" style="padding: 5px 10px; font-size:0.6rem;">WIPE LOG</button>
+                    </div>
+                    <div id="smart-history-list" class="history-list-wrap">
+                        <!-- JS injected -->
+                    </div>
+                </section>
+                
+                <!-- Quick Converter -->
+                <section class="settings-section">
+                    <h4 class="section-title">Developer Quick Convert</h4>
+                    
+                    <div class="quick-conv-box">
+                        <span style="font-size:0.65rem; color:var(--text-muted); font-family:monospace;">DATA STORAGE</span>
+                        <div class="qc-input-row" style="margin-top:10px;">
+                            <input type="number" id="bytes-input" class="api-key-input" placeholder="Bytes (B)" style="padding: 10px;">
+                        </div>
+                        <div class="qc-readout" id="data-readout" style="margin-top:10px; font-family:monospace; color:var(--text-primary); font-size:0.8rem; line-height:1.6; background: rgba(0,0,0,0.3); padding: 10px; border-radius:8px;">
+                            KB: 0 <br> MB: 0 <br> GB: 0
+                        </div>
+                    </div>
+                    
+                    <div class="quick-conv-box" style="margin-top:20px;">
+                        <span style="font-size:0.65rem; color:var(--text-muted); font-family:monospace;">CSS DESIGN UNITS</span>
+                        <div class="qc-input-row" style="margin-top:10px; display:flex; gap:10px;">
+                            <input type="number" id="px-input" class="api-key-input" placeholder="Pixels (px)" style="padding: 10px; flex:1;">
+                            <input type="number" id="rem-output" class="api-key-input" placeholder="REM" style="padding: 10px; flex:1;" readonly>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+    <script src="script.js"></script>
+</body>
+</html>

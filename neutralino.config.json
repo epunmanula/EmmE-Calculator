@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
+  "applicationId": "js.neutralino.emmecalculator",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/resources/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "tokenSecurity": "one-time",
+  "logging": {
+    "enabled": false
+  },
+  "modes": {
+    "window": {
+      "title": "EmmE Calculator",
+      "width": 700,
+      "height": 850,
+      "minWidth": 500,
+      "minHeight": 750,
+      "resizable": true,
+      "icon": "/resources/icon.ico",
+      "enableInspector": false,
+      "borderless": false,
+      "maximize": false,
+      "hidden": false,
+      "alwaysOnTop": false,
+      "exitProcessOnClose": true
+    }
+  },
+  "cli": {
+    "binaryName": "emme-calculator",
+    "resourcesPath": "/resources/",
+    "clientLibrary": "/resources/js/neutralino.js"
+  }
+}

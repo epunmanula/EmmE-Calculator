@@ -1,0 +1,31 @@
+========================================================================
+                     EmmE CALCULATOR - STANDALONE APP
+========================================================================
+
+Thank you for trying out EmmE Calculator! This is a highly optimized, 
+lightweight, and futuristic desktop calculator.
+
+------------------------------------------------------------------------
+HOW TO RUN:
+------------------------------------------------------------------------
+Double-click "EmmECalculator.exe" in this folder to start the application.
+
+* Note: Since this is a custom-compiled executable (.exe), your Windows SmartScreen 
+  or Antivirus might show a warning when running it for the first time.
+  Simply click "More info" and then click "Run anyway".
+
+------------------------------------------------------------------------
+KEY FEATURES:
+------------------------------------------------------------------------
+1. Standard Mode: Classic calculator operations with smooth fluid animations.
+2. Scientific Mode: High-performance mathematical computations (sin, cos, log, etc.).
+3. Developer Mode: Base conversions (HEX, DEC, OCT, BIN) and data storage conversions.
+4. Converter: Real-time currency conversion rates (USD, LKR, EUR, etc.) syncing live streams.
+5. Smart History Tape: Automatically tracks and copies your recent equations.
+6. Customizable Themes: Sleek dark-mode themes (Neon Lime, Pink, Cyan, Yellow).
+
+------------------------------------------------------------------------
+DEVELOPER NOTE:
+------------------------------------------------------------------------
+Created with love using Neutralinojs. Only 1.8MB in size!
+Feel free to share this ZIP file or the EXE directly with your friends.
